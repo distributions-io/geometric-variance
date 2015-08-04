@@ -6,12 +6,12 @@ Variance
 
 The [variance](https://en.wikipedia.org/wiki/variance) for a [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
 
-<div class="equation" align="center" data-raw-text="\operatorname{Var}\left[ X \right] = " data-equation="eq:variance">
-	<img src="" alt="variance for a Geometric distribution.">
+<div class="equation" align="center" data-raw-text="\operatorname{Var}\left[ X \right] = \frac{1-p}{p^2}" data-equation="eq:variance">
+	<img src="https://cdn.rawgit.com/distributions-io/geometric-variance/ea1b82979fc466f59aea2918c0dff8f0535c1530/docs/img/eqn.svg" alt="Variance for a Geometric distribution.">
 	<br>
 </div>
 
-where `p` is the success probability.
+where `0 <= p <= 1` is the success probability.
 
 
 ## Installation
@@ -175,7 +175,7 @@ bool = ( mat === out );
 
 ## Notes
 
-*	If an element is __not__ a positive number, the [expected value](https://en.wikipedia.org/wiki/Expected_value) is `NaN`.
+*	If an element is __not__ a number on the interval [0,1], the [expected value](https://en.wikipedia.org/wiki/Expected_value) is `NaN`.
 
 	``` javascript
 	var p, out;
@@ -251,7 +251,7 @@ var p,
 // Plain arrays...
 p = new Array( 10 );
 for ( i = 0; i < p.length; i++ ) {
-	p[ i ] = i;
+	p[ i ] = i / 10;
 }
 out = variance( p );
 
@@ -282,7 +282,7 @@ out = variance( p, {
 // Typed arrays...
 p = new Int32Array( 10 );
 for ( i = 0; i < p.length; i++ ) {
-	p[ i ] = i;
+	p[ i ] = i / 10;
 }
 out = variance( p );
 

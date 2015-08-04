@@ -28,14 +28,15 @@ describe( 'number variance', function tests() {
 	});
 
 	it( 'should compute the distribution variance', function test() {
-		assert.strictEqual( variance( 0.2 ), 20 );
-		assert.strictEqual( variance( 0.4  ), 3.75 );
-		assert.strictEqual( variance( 0.6  ), 10/9 );
-		assert.strictEqual( variance( 0.8  ), 0.3125 );
+		assert.closeTo( variance( 0.2 ), 20, 1e-5 );
+		assert.closeTo( variance( 0.4  ), 3.75, 1e-5 );
+		assert.closeTo( variance( 0.6  ), 10/9, 1e-5 );
+		assert.closeTo( variance( 0.8  ), 0.3125, 1e-5 );
 	});
 
 	it( 'should return `NaN` for invalid values of parameter p', function test() {
-		assert.isTrue( isnan( mean( -1 ) ) );
+		assert.isTrue( isnan( variance( -1 ) ) );
+		assert.isTrue( isnan( variance( 2 ) ) );
 	});
 
 });

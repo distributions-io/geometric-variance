@@ -6,6 +6,9 @@
 var // Expectation library:
 	chai = require( 'chai' ),
 
+	// Deep close to:
+	deepCloseTo = require( './utils/deepcloseto.js' ),
+
 	// Module to be tested:
 	variance = require( './../lib/array.js' );
 
@@ -33,7 +36,8 @@ describe( 'array variance', function tests() {
 		actual = variance( actual, p );
 		expected = [ 20, 3.75, 10/9, 0.3125 ];
 
-		assert.deepEqual( actual, expected );
+		assert.isTrue( deepCloseTo( actual, expected, 1e-5 ) );
+
 	});
 
 	it( 'should return an empty array if provided an empty array', function test() {

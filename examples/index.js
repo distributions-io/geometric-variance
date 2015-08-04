@@ -13,7 +13,7 @@ var p,
 // Plain arrays...
 p = new Array( 10 );
 for ( i = 0; i < p.length; i++ ) {
-	p[ i ] = i;
+	p[ i ] = i / 10;
 }
 out = variance( p );
 console.log( 'Arrays: %s\n', out );
@@ -55,7 +55,7 @@ console.log( '\n' );
 // Typed arrays...
 p = new Int32Array( 10 );
 for ( i = 0; i < p.length; i++ ) {
-	p[ i ] = i;
+	p[ i ] = i / 10;
 }
 tmp = variance( p );
 out = '';

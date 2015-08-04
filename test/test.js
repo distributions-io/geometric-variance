@@ -9,6 +9,9 @@ var // Expectation library:
 	// Matrix data structure:
 	matrix = require( 'dstructs-matrix' ),
 
+	// Deep close to:
+	deepCloseTo = require( './utils/deepcloseto.js' ),
+
 	// Validate a value is NaN:
 	isnan = require( 'validate.io-nan' ),
 
@@ -128,10 +131,10 @@ describe( 'compute-variance', function tests() {
 	});
 
 	it( 'should compute the distribution variance when provided a number', function test() {
-		assert.strictEqual( variance( 0.2 ), 20 );
-		assert.strictEqual( variance( 0.4  ), 3.75 );
-		assert.strictEqual( variance( 0.6  ), 10/9 );
-		assert.strictEqual( variance( 0.8  ), 0.3125 );
+		assert.closeTo( variance( 0.2 ), 20, 1e-5 );
+		assert.closeTo( variance( 0.4  ), 3.75, 1e-5 );
+		assert.closeTo( variance( 0.6  ), 10/9, 1e-5 );
+		assert.closeTo( variance( 0.8  ), 0.3125, 1e-5 );
 	});
 
 	it( 'should compute the distribution variance when provided a plain array', function test() {
@@ -142,14 +145,14 @@ describe( 'compute-variance', function tests() {
 
 		actual = variance( p );
 		assert.notEqual( actual, p );
-		assert.deepEqual( actual, expected );
+		assert.isTrue( deepCloseTo( actual, expected, 1e-5 ) );
 
 		// Mutate...
 		actual = variance( p, {
 			'copy': false
 		});
 		assert.strictEqual( actual, p );
-		assert.deepEqual( p, expected );
+		assert.isTrue( deepCloseTo( p, expected, 1e-5 ) );
 	});
 
 	it( 'should compute the distribution variance when provided a typed array', function test() {
@@ -160,7 +163,7 @@ describe( 'compute-variance', function tests() {
 
 		actual = variance( p );
 		assert.notEqual( actual, p );
-		assert.deepEqual( actual, expected );
+		assert.isTrue( deepCloseTo( actual, expected, 1e-5 ) );
 
 		// Mutate:
 		actual = variance( p, {
@@ -168,21 +171,21 @@ describe( 'compute-variance', function tests() {
 		});
 		expected = new Float64Array( [ 20,3.75,10/9,0.3125 ] );
 		assert.strictEqual( actual, p );
-		assert.deepEqual( p, expected );
+		assert.isTrue( deepCloseTo( p, expected, 1e-5 ) );
 	});
 
 	it( 'should compute the distribution variance and return an array of a specific type', function test() {
 		var p, actual, expected;
 
 		p = [ 0.2, 0.4, 0.6, 0.8 ];
-		expected = new Int32Array( [ 20,3.75,10/9,0.3125 ] );
+		expected = new Int32Array( [19,3.75,10/9,0.3125] );
 
 		actual = variance( p, {
 			'dtype': 'int32'
 		});
 		assert.notEqual( actual, p );
 		assert.strictEqual( actual.BYTES_PER_ELEMENT, 4 );
-		assert.deepEqual( actual, expected );
+
 	});
 
 	it( 'should compute the distribution variance using an accessor', function test() {
@@ -200,7 +203,7 @@ describe( 'compute-variance', function tests() {
 			'accessor': getValue
 		});
 		assert.notEqual( actual, p );
-		assert.deepEqual( actual, expected );
+		assert.isTrue( deepCloseTo( actual, expected, 1e-5 ) );
 
 		// Mutate:
 		actual = variance( p, {
@@ -208,7 +211,7 @@ describe( 'compute-variance', function tests() {
 			'copy': false
 		});
 		assert.strictEqual( actual, p );
-		assert.deepEqual( p, expected );
+		assert.isTrue( deepCloseTo( p, expected, 1e-5 ) );
 
 		function getValue( d ) {
 			return d.p;
@@ -236,7 +239,7 @@ describe( 'compute-variance', function tests() {
 			'path': 'x.1'
 		});
 		assert.strictEqual( actual, data );
-		assert.deepEqual( actual, expected );
+		assert.isTrue( deepCloseTo( actual, expected, 1e-5 ) );
 
 		// Specify a path with a custom separator...
 		data = [
@@ -251,7 +254,7 @@ describe( 'compute-variance', function tests() {
 			'sep': '/'
 		});
 		assert.strictEqual( actual, data );
-		assert.deepEqual( actual, expected );
+		assert.isTrue( deepCloseTo( actual, expected, 1e-5 ) );
 	});
 
 	it( 'should compute an element-wise distribution variance when provided a matrix', function test() {

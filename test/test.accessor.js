@@ -6,6 +6,9 @@
 var // Expectation library:
 	chai = require( 'chai' ),
 
+	// Deep close to:
+	deepCloseTo = require( './utils/deepcloseto.js' ),
+
 	// Module to be tested:
 	variance = require( './../lib/accessor.js' );
 
@@ -38,7 +41,7 @@ describe( 'accessor variance', function tests() {
 		actual = variance( actual, p, getValue );
 		expected = [ 20, 3.75, 10/9, 0.3125 ];
 
-		assert.deepEqual( actual, expected );
+		assert.isTrue( deepCloseTo( actual, expected, 1e-5 ) );
 
 		function getValue( d ) {
 			return d.p;
