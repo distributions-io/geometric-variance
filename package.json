@@ -1,6 +1,6 @@
 {
   "name": "distributions-geometric-variance",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Geometric distribution variance.",
   "author": {
     "name": "Philipp Burckhardt",
