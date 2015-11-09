@@ -11,7 +11,7 @@ The [variance](https://en.wikipedia.org/wiki/variance) for a [geometric](https:/
 	<br>
 </div>
 
-where `0 <= p <= 1` is the success probability.
+where `0 <= p <= 1` is the success probability. The random variable `X` denotes the number of failures until the first success in a sequence of independent Bernoulli trials.
 
 
 ## Installation
