@@ -4,10 +4,10 @@ Variance
 
 > [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution [variance](https://en.wikipedia.org/wiki/variance).
 
-The [variance](https://en.wikipedia.org/wiki/variance) for a [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
+The [variance](https://en.wikipedia.org/wiki/variance) for a [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) random variable is
 
 <div class="equation" align="center" data-raw-text="\operatorname{Var}\left[ X \right] = \frac{1-p}{p^2}" data-equation="eq:variance">
-	<img src="https://cdn.rawgit.com/distributions-io/geometric-variance/ea1b82979fc466f59aea2918c0dff8f0535c1530/docs/img/eqn.svg" alt="Variance for a Geometric distribution.">
+	<img src="https://cdn.rawgit.com/distributions-io/geometric-variance/ea1b82979fc466f59aea2918c0dff8f0535c1530/docs/img/eqn.svg" alt="Variance for a geometric distribution.">
 	<br>
 </div>
 
@@ -31,7 +31,7 @@ var variance = require( 'distributions-geometric-variance' );
 
 #### variance( p[, opts] )
 
-Computes the [variance](https://en.wikipedia.org/wiki/variance) for a [Geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution with parameter `p` . `p` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
+Computes the [variance](https://en.wikipedia.org/wiki/variance) for a [geometric](https://en.wikipedia.org/wiki/Geometric_distribution) distribution with parameter `p` . `p` may be either a [`number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number), an [`array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array), a [`typed array`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Typed_arrays), or a [`matrix`](https://github.com/dstructs/matrix).
 
 ``` javascript
 var matrix = require( 'dstructs-matrix' ),
